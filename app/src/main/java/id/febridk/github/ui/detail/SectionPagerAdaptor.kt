@@ -1,13 +1,20 @@
 package id.febridk.github.ui.detail
 
 import android.content.Context
+import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import id.febridk.github.R
 
-class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager, data: Bundle) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+    private val fragmentBundle: Bundle
+
+    init{
+        fragmentBundle = data
+    }
 
     @StringRes
     private val TAB_TITLES = intArrayOf(R.string.tab_followers, R.string.tab_following)
@@ -20,6 +27,8 @@ class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager) : Frag
             0 -> fragment = FollowersFragment()
             1 -> fragment = FollowingFragment()
         }
+
+        fragment?.arguments = this.fragmentBundle
         return fragment as Fragment
     }
 

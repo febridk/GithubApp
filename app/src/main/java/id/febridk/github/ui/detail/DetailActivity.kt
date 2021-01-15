@@ -28,6 +28,8 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val username = intent.getStringExtra(USERNAME)
+        val bundle = Bundle()
+        bundle.putString(USERNAME, username)
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
 
@@ -49,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
             }
         })
 
-        val sectionPagerAdapter = SectionPagerAdaptor(this, supportFragmentManager)
+        val sectionPagerAdapter = SectionPagerAdaptor(this, supportFragmentManager, bundle)
         binding.apply {
             detailPager.adapter = sectionPagerAdapter
             detailTab.setupWithViewPager(detailPager)

@@ -35,10 +35,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatar_url)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .centerCrop()
                     .into(userAvatar)
-                userUsername.text = user.login
+                userLogin.text = user.login
+                userId.text = user.id.toString()
             }
         }
     }

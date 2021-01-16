@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 Intent(this@MainActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.USERNAME, data.login)
@@ -42,7 +43,12 @@ class MainActivity : AppCompatActivity() {
         ).get(UserViewModel::class.java)
 
         binding.apply {
-            recyclerUser.addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayout.VERTICAL))
+            recyclerUser.addItemDecoration(
+                DividerItemDecoration(
+                    this@MainActivity,
+                    LinearLayout.VERTICAL
+                )
+            )
             recyclerUser.layoutManager = LinearLayoutManager(this@MainActivity)
             recyclerUser.setHasFixedSize(true)
             recyclerUser.adapter = adapter
@@ -72,9 +78,13 @@ class MainActivity : AppCompatActivity() {
     private fun searchUser() {
         binding.apply {
             val query = searchQuery.text.toString()
-            if (query.isEmpty()) return
-            showLoading(true)
-            viewModel.setSearchUsers(query)
+            if (query.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Field cannot be empty", Toast.LENGTH_SHORT).show()
+            } else {
+                showLoading(true)
+                viewModel.setSearchUsers(query)
+            }
+
         }
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/language"
-        android:title=""
         android:icon="@drawable/github_language"
-        app:showAsAction="collapseActionView|always"/>
+        android:title="@string/text_language"
+        app:showAsAction="collapseActionView|always" />
 </menu>

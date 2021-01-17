@@ -7,4 +7,5 @@
     <string name="followers">Pengikut</string>
     <string name="following">Mengikuti</string>
     <string name="app_detail_name">Pengguna Github</string>
+    <string name="text_language">Bahasa</string>
 </resources>

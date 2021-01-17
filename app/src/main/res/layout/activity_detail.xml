@@ -78,10 +78,11 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/detailTab"
-        app:tabIndicatorColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primaryDark"
+        android:elevation="10dp"
+        app:tabIndicatorColor="@color/white"
         app:tabTextColor="@color/white" />
 
     <androidx.viewpager.widget.ViewPager

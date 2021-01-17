@@ -19,7 +19,7 @@ interface Api {
     @GET("users/{username}")
     @Headers("Authorization: token a555ced456898398e98b8091ed3b12c595eb9f04")
     fun getUserDetail(
-        @Path("username") username : String
+        @Path("username") username: String
     ): Call<DetailUser>
 
     @GET("users/{username}/followers")

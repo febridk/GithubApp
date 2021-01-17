@@ -79,7 +79,8 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             val query = searchQuery.text.toString()
             if (query.isEmpty()) {
-                Toast.makeText(this@MainActivity, "Field cannot be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Field cannot be empty", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 showLoading(true)
                 viewModel.setSearchUsers(query)

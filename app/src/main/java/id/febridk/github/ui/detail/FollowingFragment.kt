@@ -35,7 +35,10 @@ class FollowingFragment : Fragment(R.layout.fragment_follow) {
         }
 
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowingViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(FollowingViewModel::class.java)
 
         viewModel.setListFollowing(username)
         viewModel.getListFollowing().observe(viewLifecycleOwner, {

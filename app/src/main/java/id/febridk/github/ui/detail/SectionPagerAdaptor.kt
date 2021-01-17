@@ -8,11 +8,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import id.febridk.github.R
 
-class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager, data: Bundle) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager, data: Bundle) :
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragmentBundle: Bundle
 
-    init{
+    init {
         fragmentBundle = data
     }
 
@@ -22,8 +23,8 @@ class SectionPagerAdaptor(private val mCtx: Context, fm: FragmentManager, data: 
     override fun getCount(): Int = 2
 
     override fun getItem(position: Int): Fragment {
-        var fragment : Fragment? = null
-        when(position){
+        var fragment: Fragment? = null
+        when (position) {
             0 -> fragment = FollowersFragment()
             1 -> fragment = FollowingFragment()
         }

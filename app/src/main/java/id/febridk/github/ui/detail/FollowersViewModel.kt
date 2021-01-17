@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowersViewModel : ViewModel(){
+class FollowersViewModel : ViewModel() {
     val listFollowers = MutableLiveData<ArrayList<User>>()
 
     fun setListFollowers(username: String) {

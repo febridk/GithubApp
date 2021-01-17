@@ -1,5 +1,6 @@
 package id.febridk.github.ui.main
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -85,8 +87,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.language->{
+        when (item.itemId) {
+            R.id.language -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
                 startActivity(intent)
             }
@@ -101,9 +103,11 @@ class MainActivity : AppCompatActivity() {
             if (query.isEmpty()) {
                 Toast.makeText(this@MainActivity, "Field cannot be empty", Toast.LENGTH_SHORT)
                     .show()
+                closeKeyboard()
             } else {
                 showLoading(true)
                 viewModel.setSearchUsers(query)
+                closeKeyboard()
             }
 
         }
@@ -114,6 +118,15 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun closeKeyboard() {
+        val view: View? = this?.currentFocus
+        if (view != null) {
+            val keyboard: InputMethodManager =
+                this?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            keyboard.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 

@@ -7,7 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import id.febridk.github.R
 import id.febridk.github.databinding.ActivityDetailBinding
-
+import java.text.NumberFormat
+import java.util.Locale
 
 class DetailActivity : AppCompatActivity() {
 
@@ -48,8 +49,10 @@ class DetailActivity : AppCompatActivity() {
                 binding.apply {
                     detailLogin.text = it.name
                     detailUsername.text = it.login
-                    userFollowers.text = "${it.followers} ${text_followers}"
-                    userFollowing.text = "${it.following} ${text_following}"
+                    userFollowers.text = "${NumberFormat.getInstance(Locale.GERMAN)
+                        .format(it.followers)} ${text_followers}"
+                    userFollowing.text = "${NumberFormat.getInstance(Locale.GERMAN)
+                        .format(it.following)} ${text_following}"
 
                     Glide.with(this@DetailActivity)
                         .load(it.avatar_url)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github</string>
+    <string name="tab_followers">Pengikut</string>
+    <string name="tab_following">Mengikuti</string>
+    <string name="search">Cari</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="app_detail_name">Pengguna Github</string>
+</resources>

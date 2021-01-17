@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Github</string>
-
     <string name="tab_followers">Followers</string>
     <string name="tab_following">Following</string>
+    <string name="search">Search</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="app_detail_name">Github User</string>
 </resources>

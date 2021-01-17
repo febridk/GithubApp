@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import id.febridk.github.R
 import id.febridk.github.databinding.ActivityDetailBinding
 
 
@@ -22,9 +23,13 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val app_detail_name: String = getString(R.string.app_detail_name)
+        val text_followers: String = getString(R.string.followers)
+        val text_following: String = getString(R.string.following)
+
         supportActionBar?.apply {
             elevation = 0f
-            title = "Github User"
+            title = app_detail_name
             setDisplayHomeAsUpEnabled(true)
         }
 
@@ -43,8 +48,8 @@ class DetailActivity : AppCompatActivity() {
                 binding.apply {
                     detailLogin.text = it.name
                     detailUsername.text = it.login
-                    userFollowers.text = "${it.followers} Followers"
-                    userFollowing.text = "${it.following} Following"
+                    userFollowers.text = "${it.followers} ${text_followers}"
+                    userFollowing.text = "${it.following} ${text_following}"
 
                     Glide.with(this@DetailActivity)
                         .load(it.avatar_url)

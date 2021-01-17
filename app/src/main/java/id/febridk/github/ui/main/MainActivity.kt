@@ -1,15 +1,22 @@
 package id.febridk.github.ui.main
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import id.febridk.github.R
 import id.febridk.github.data.model.User
 import id.febridk.github.databinding.ActivityMainBinding
 import id.febridk.github.ui.detail.DetailActivity
@@ -73,6 +80,22 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_bar, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.language->{
+                val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
+            }
+        }
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     private fun searchUser() {

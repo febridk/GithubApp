@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+def GITHUB_API_KEY = '"' + GithubAPIKEY + '"' ?: '"Define your Github API Key!"'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,6 +17,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        each { type ->
+            type.buildConfigField 'String', 'GithubAPIKEY', GITHUB_API_KEY
+        }
     }
 
     buildFeatures {

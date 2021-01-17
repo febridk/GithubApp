@@ -10,4 +10,5 @@
 
     <color name="primaryDark">#24292e</color>
     <color name="secondaryDark">#0d1117</color>
+    <color name="secondaryDarkNight">#121212</color>
 </resources>
